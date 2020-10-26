@@ -1,0 +1,2 @@
+class AdsType < ApplicationRecord
+end
