@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @ads_type.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_ads_type_path(@ads_type) if can? :update, @ad  %> |
+<%= link_to 'Back', ads_types_path %>

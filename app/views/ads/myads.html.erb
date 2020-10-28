@@ -1,0 +1,32 @@
+<h1>Listing your ads</h1>
+
+<table border="1">
+  <tr>
+    <th>Description</th>
+    <th>Name</th>
+    <th>Status</th>
+    <th>Type</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @ads.each do |ad| %>
+  <tr>
+    <td><%= ad.description %></td>
+    <td><%= ad.name %></td>
+    <td><%= ad.state_name %></td>
+    <td><%= get_name_of_type(@types, ad.ads_type_id.to_i)   %></td>
+    <td><%= link_to 'Show', ad %></td>
+    <td><%= link_to 'Edit', edit_ad_path(ad) if can? :update, ad %></td>
+    <td><%= link_to 'Destroy', ad, :method => :delete if can? :destroy, ad %></td>
+    <td><%= link_to 'send admin to approve', user_actions_to_new_path(:id => ad.id) if ad.can_to_new? %></td>
+    <td><%= link_to 'move to drafts', user_actions_to_draft_path(:id => ad.id) if ad.can_to_draft? %></td>
+  </tr>
+<% end %>
+</table>
+<%= will_paginate @ads %>
+<br />
+<%= link_to 'New Ad', new_ad_path %>
