@@ -1,0 +1,17 @@
+<h1>Listing ads</h1>
+
+
+<% @ads.each do |ad| %>
+	<div class="ad">
+		<h2><%= link_to ad.name, ad %></h2>
+		<%= ad.description %><br>
+		Type: <%= get_name_of_type(@types, ad.ads_type_id.to_i)%> <br>
+		Actions: <%= link_to 'Show', ad %>
+		<%= link_to 'Edit', edit_ad_path(ad) if can? :update, ad%>
+		<%= link_to 'Destroy', ad, :method => :delete, :data => { :confirm => 'Are you sure?' } if can? :delete, ad %>			
+	</div>
+<% end %>	
+
+<%= will_paginate @ads %>
+<br />
+<%= link_to 'New Ad', new_ad_path if can? :create, Ad %>
