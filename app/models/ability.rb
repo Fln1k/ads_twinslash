@@ -2,7 +2,7 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    user ||= User.new
+    user ||= User.new :role => 'visitor'
     if user.role == 'admin'
       can :manage, :all
       cannot [:create,:update,:update_state], Ad
