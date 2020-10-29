@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
-
+<p>
+  <% @ad.images.each  do |image| %>
+    <%= image_tag(image, size:'250x250') %>
+  <% end %>
+</p>
 <p>
   <b>Description:</b>
   <%= @ad.description %>
@@ -8,9 +12,6 @@
 <p>
   <b>Name:</b>
   <%= @ad.name %>
-</p>
-<p>
-
 </p>
 
 <%= link_to 'Edit', edit_ad_path(@ad) if can? :update, @ad %>
