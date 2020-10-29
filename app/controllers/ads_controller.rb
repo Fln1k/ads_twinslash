@@ -35,7 +35,7 @@ class AdsController < ApplicationController
   def create
     @ad = Ad.new(params[:ad])
     respond_to do |format|
-      if @ad.save
+      if @ad.save and @ad.images.attach(params[:ad][:images])
         format.html { redirect_to @ad, :notice => 'Ad was successfully created.' }
         format.json { render :json => @ad, :status => :created, :location => @ad }
       else
@@ -106,6 +106,6 @@ class AdsController < ApplicationController
   end
 
   def ad_params
-    params.require(:ad).permit(:name,:description,:ads_type_id)
+    params.require(:ad).permit(:name,:description,:ads_type_id, images: [])
   end
 end

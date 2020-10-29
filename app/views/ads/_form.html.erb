@@ -23,10 +23,10 @@
     <%= f.label :type %><br />
     <%= f.select :ads_type_id, get_ads_types(@ads_types) %>
   </div>
-  <div class="actions">
-    <%= f.submit 'Update Ad'%>
+  <div class="field">
+    <%= f.file_field :images, multiple: true %><br>
   </div>
   <div class="actions">
-    <%= f.submit 'Add photo'%>
+    <%= f.submit 'Update Ad'%>
   </div>
 <% end %>

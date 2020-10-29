@@ -1,6 +1,7 @@
 class Ad < ApplicationRecord
   belongs_to :user
   validates :ads_type_id, :user_id, :presence => true
+  has_many_attached :images
 
   state_machine :initial => :draft do
     state :draft, :value => 1
