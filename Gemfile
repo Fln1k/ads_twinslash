@@ -10,6 +10,7 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'cancancan'
+gem 'whenever', require: false
 gem 'state_machine'
 gem 'will_paginate'
 group :development, :test do
