@@ -1,5 +1,6 @@
 <% if user_signed_in? %>
   <% if current_user.try(:admin?) %>
+    <li><%= link_to 'ADS TYPES', ads_types_path %></li>
     <li><%= link_to 'New ads', ads_new_ads_path %></li>
     <li><%= link_to 'Archived ads', ads_archive_ads_path %></li>
     <li><%= link_to 'Approved ads', ads_approved_ads_path %></li>
